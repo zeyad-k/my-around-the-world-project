@@ -7,6 +7,7 @@ import ShowMessage from "./components/ShowMessage";
 
 export default function App() {
   const [countriesList, setCountriesList] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   useEffect(() => {
@@ -19,6 +20,7 @@ export default function App() {
       .then((response) => response.json())
       .then((data) => {
         setCountriesList(data);
+        setFilteredCountries(data);
         // console.log(data);
       })
       .catch(() => setIsError(true))
@@ -34,10 +36,16 @@ export default function App() {
         {!isError && !isLoading && (
           <>
             <div className="flex flex-col justify-between gap-10 md:h-14 md:flex-row md:gap-0">
-              <SearchInput />
-              <RegionMenu />
+              <SearchInput
+                countriesList={countriesList}
+                filterCountriesList={setFilteredCountries}
+              />
+              <RegionMenu
+                countriesList={countriesList}
+                filterCountriesList={setFilteredCountries}
+              />
             </div>
-            <CountryList data={countriesList} />
+            <CountryList data={filteredCountries} />
           </>
         )}
       </div>

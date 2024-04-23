@@ -8,11 +8,21 @@ const options = [
   { value: "oceania", label: "Oceania" },
 ];
 
-const RegionMenu = () => {
+const RegionMenu = ({ countriesList, filterCountriesList }) => {
+  const handleRegionChange = (e) => {
+    const region = e.label;
+    // console.log(e.label);
+    const filteredCountries =
+      region === "All regions"
+        ? countriesList
+        : countriesList.filter((country) => country.region === region);
+    filterCountriesList(filteredCountries);
+  };
+
   return (
     <Select
-      //   defaultValue={options[0]}
-      //   onChange={handleRegionChange}
+      defaultValue={options[0]}
+      onChange={handleRegionChange}
       options={options}
       classNames={{
         input: () => "dark:!text-gray-100",

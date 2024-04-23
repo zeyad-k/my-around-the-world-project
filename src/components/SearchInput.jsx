@@ -1,6 +1,20 @@
-const SearchInput = () => {
+const SearchInput = ({ countriesList, filterCountriesList }) => {
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchTerm = e.target.elements.search.value;
+    const filteredCountries =
+      !searchTerm || searchTerm === ""
+        ? countriesList
+        : countriesList.filter((country) =>
+            country.name.official
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase()),
+          );
+
+    filterCountriesList(filteredCountries);
+  };
   return (
-    <form className="relative flex-1">
+    <form className="relative flex-1" onSubmit={handleSearch}>
       <div className="absolute left-8 top-5">
         {" "}
         <svg
@@ -22,7 +36,7 @@ const SearchInput = () => {
         </svg>
       </div>
       <input
-        type="search"
+        type="text"
         name="search"
         className="h-12 w-full max-w-md rounded-full pl-20 shadow dark:bg-gray-800 md:h-14"
         placeholder="Search..."
