@@ -1,5 +1,5 @@
 import CountryCard from "./CountryCard";
-import ShowMessage from "./ShowMessage";
+import EmptySearch from "./EmptySearch";
 
 const CountryList = ({ data }) => {
   return (
@@ -16,7 +16,7 @@ const CountryList = ({ data }) => {
           />
         ))
       ) : (
-        <ShowMessage message={"Empty"} />
+        <EmptySearch />
       )}
     </div>
   );
