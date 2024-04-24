@@ -10,18 +10,21 @@ const CountryCard = ({ name, population, region, capital, flag }) => {
           alt="flag"
           loading="lazy"
         />
-        <h2 className="mb-4 ml-3 text-lg font-extrabold">{name}</h2>
+        <h2 className="mb-4 ml-3 mt-2 text-lg font-extrabold">{name}</h2>
         <div className="ml-3 flex flex-col gap-2">
           <p>
-            <span className="font-semibold">Population</span>
-            <span className="font-light">{population}</span>
+            <span className="font-semibold">Population: </span>
+            <span className="font-light">
+              {" "}
+              {parseInt(population).toLocaleString()}
+            </span>
           </p>
           <p>
-            <span className="font-semibold">Region:</span>
+            <span className="font-semibold">Region: </span>
             <span className="font-light">{region}</span>
           </p>
           <p>
-            <span className="font-semibold">Capital:</span>
+            <span className="font-semibold">Capital: </span>
             <span className="font-light">{capital}</span>
           </p>
         </div>
