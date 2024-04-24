@@ -1,45 +1,31 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import CountryList from "../components/CountryList";
 import RegionMenu from "../components/RegionMenu";
 import SearchInput from "../components/SearchInput";
 import ShowMessage from "../components/ShowMessage";
+import { useFetchData } from "../../useFetchData";
 
 const Home = () => {
-  const [countriesList, setCountriesList] = useState([]);
-  const [filteredCountries, setFilteredCountries] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  useEffect(() => {
-    fetchCountriesData();
-  }, []);
-  const fetchCountriesData = () => {
-    setIsLoading(true);
-
-    fetch("https://restcountries.com/v3.1/all")
-      .then((response) => response.json())
-      .then((data) => {
-        setCountriesList(data);
-        setFilteredCountries(data);
-        // console.log(data);
-      })
-      .catch(() => setIsError(true))
-      .finally(() => setIsLoading(false));
-  };
-
+  const {
+    result,
+    filteredCountries,
+    setFilteredCountries,
+    isLoading,
+    isError,
+  } = useFetchData();
   return (
     <>
-      {" "}
       {isError && <ShowMessage message="Something went wrong!" />}
       {isLoading && <ShowMessage message="Loading countries data..." />}
       {!isError && !isLoading && (
         <>
           <div className="flex flex-col justify-between gap-10 md:h-14 md:flex-row md:gap-0">
             <SearchInput
-              countriesList={countriesList}
+              countriesList={result}
               filterCountriesList={setFilteredCountries}
             />
             <RegionMenu
-              countriesList={countriesList}
+              countriesList={result}
               filterCountriesList={setFilteredCountries}
             />
           </div>
