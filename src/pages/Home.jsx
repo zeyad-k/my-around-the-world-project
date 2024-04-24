@@ -13,6 +13,7 @@ const Home = () => {
     isLoading,
     isError,
   } = useFetchData();
+
   return (
     <>
       {isError && <ShowMessage message="Something went wrong!" />}
