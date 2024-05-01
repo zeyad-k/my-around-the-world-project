@@ -20,7 +20,7 @@ const Home = () => {
       {isLoading && <ShowMessage message="Loading countries data..." />}
       {!isError && !isLoading && (
         <>
-          <div className="flex flex-col justify-between gap-10 md:h-14 md:flex-row md:gap-0">
+          <div className="flex flex-col justify-between gap-10 px-4 md:h-14 md:flex-row md:gap-0 lg:px-16">
             <SearchInput
               countriesList={result}
               filterCountriesList={setFilteredCountries}
@@ -29,7 +29,7 @@ const Home = () => {
               countriesList={result}
               filterCountriesList={setFilteredCountries}
             />
-          </div>
+          </div>{" "}
           <CountryList data={filteredCountries} />
         </>
       )}
