@@ -3,7 +3,9 @@ import EmptySearch from "./EmptySearch";
 
 const CountryList = ({ data }) => {
   return (
-    <div className="mt-8 grid justify-between gap-x-[70px] gap-y-12 md:mt-12 md:grid-cols-[repeat(2,minmax(0,_auto))] lg:grid-cols-[repeat(4,minmax(0,_auto))] lg:gap-y-[70px]">
+    // <div className="mt-8 grid justify-between gap-x-[70px] gap-y-12 md:mt-12 md:grid-cols-[repeat(2,minmax(0,_auto))] lg:grid-cols-[repeat(4,minmax(0,_auto))] lg:gap-y-[70px]">
+    <div className="mt-8 grid justify-between gap-x-[70px] gap-y-12 px-4 md:mt-12 md:grid-cols-[repeat(2,minmax(0,_auto))] lg:grid-cols-[repeat(4,minmax(0,_auto))] lg:gap-y-[70px] lg:px-16">
+      {" "}
       {data && data.length ? (
         data.map((country) => (
           <CountryCard
